@@ -24,6 +24,7 @@ public class Prog2 extends BaseClass {
 		
 	}
 	*/
+	//added
 	@Test
 	public void loginTest() throws Exception
 	{
