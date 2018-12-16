@@ -14,6 +14,10 @@ public class Pageobject {
 		{
 			hobj=PageFactory.initElements(DriverClass.d, HomePage.class);
 			
+			
+			
+			
+			
 		}
 	}
 

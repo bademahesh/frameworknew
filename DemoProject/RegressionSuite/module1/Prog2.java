@@ -1,5 +1,6 @@
 package module1;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.base.BaseClass;
@@ -7,14 +8,14 @@ import com.library.common.DriverClass;
 
 public class Prog2 extends BaseClass {
 	
-	/*@DataProvider(name="logindata")
+	@DataProvider()
 	public Object[][] getData() throws Exception
 	{
 		String[][] data=elib.getTableArray("xxxx", "xxxxxx");
 		
 		return data;
 		
-	}*/
+	}
 	/*@DataProvider(name="basicsearchdata")
 	public Object[][] getData2() throws Exception
 	{
@@ -25,10 +26,10 @@ public class Prog2 extends BaseClass {
 	}
 	*/
 	//added
-	@Test
+	@Test()
 	public void loginTest() throws Exception
 	{
-		slog.startTest(htmlreport,sc.stepNumber(),"TestCase");
+		slog.startTest(htmlreport,sc.stepNumber(),this.getClass().getName());
 		DriverClass.d.get(url);
 		slog.passStep("Browser Launched", resultPath);
 		obj.hobj.txt_uid().sendKeys("xxxx");

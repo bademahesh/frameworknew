@@ -30,7 +30,7 @@ public class BaseClass extends PropertiesFetch{
 	public static String propfile="demo.properties";
 	//public static String path="D:\\ExtentReports\\ExtentReportResults";
 	public static String spath="D:\\screenshots";
-	public static String htmlreport="D:\\ExtentReports\\ExtentReportResults"+clib.getDateTime()+".html";
+	public static String htmlreport="";
 	public static String browser,env,sprint,release,uid,pwd,resultPath,url; 
 	@BeforeTest
 	public void startTest() throws Exception
@@ -44,7 +44,8 @@ public class BaseClass extends PropertiesFetch{
 		release=PropertiesFetch.release;
 		uid=PropertiesFetch.uid;
 		pwd=PropertiesFetch.pwd;
-		resultPath=PropertiesFetch.resultPath+"\\Screenshots\\"+clib.getDateTime()+"\\";
+		resultPath=PropertiesFetch.resultPath+"\\reports\\";
+		htmlreport=PropertiesFetch.resultPath+"\\reports\\";
 	}
 	
 	@BeforeMethod
@@ -52,6 +53,8 @@ public class BaseClass extends PropertiesFetch{
 	{
 		sc.resetStepCount();
 		System.out.println("Before Method");
+		resultPath=resultPath+"\\screenshots\\"+this.getClass().getName()+"\\"+clib.getDateTime();
+		htmlreport=htmlreport+"\\extentreport\\"+this.getClass().getName()+".html";;
 		clib.browserLaunch(browser);
 		obj.pom();
 		//clib.implicitWait();

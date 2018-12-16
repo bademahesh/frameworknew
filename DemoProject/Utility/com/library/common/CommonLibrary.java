@@ -71,7 +71,12 @@ public class CommonLibrary extends BaseClass{
 		return dateFormat.format(dt).toString();
 		
 	}
-	
+	public String getDate()
+	{
+		Date dt = new Date();
+		return dt.toString();
+		
+	}
 	public boolean isElementPresent(By by) {
 	    try {
 	    	DriverClass.d.findElement(by);
