@@ -2,6 +2,7 @@ package com.library.common;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,7 +12,11 @@ public class ResultReport {
 	
 	public static void AutomationReport(String htmlfile,String sprint,String screenshots,String env,String release,String module) throws IOException
 	{
+		
+		 
 		FileReader fr=new FileReader(htmlfile);
+		
+		
 		BufferedReader br=new BufferedReader(fr);
 		StringBuilder content=new StringBuilder(1024);
 		String s;

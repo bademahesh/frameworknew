@@ -1,8 +1,10 @@
 package com.base;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
@@ -45,7 +47,15 @@ public class BaseClass extends PropertiesFetch{
 		uid=PropertiesFetch.uid;
 		pwd=PropertiesFetch.pwd;
 		resultPath=PropertiesFetch.resultPath+"\\reports\\";
-		htmlreport=PropertiesFetch.resultPath+"\\reports\\";
+		htmlreport=PropertiesFetch.resultPath+"\\reports\\htmlrreports\\"+this.getClass().getName()+".html";
+		
+		//htmlreport=htmlreport+clib.getDateTime()+".html";
+		File file = new java.io.File(htmlreport);
+		//file.mkdirs(); // wrong! 
+		file.getParentFile().mkdirs(); // correct!
+		
+		
+		
 	}
 	
 	@BeforeMethod
@@ -53,19 +63,29 @@ public class BaseClass extends PropertiesFetch{
 	{
 		sc.resetStepCount();
 		System.out.println("Before Method");
-		resultPath=resultPath+"\\screenshots\\"+this.getClass().getName()+"\\"+clib.getDateTime();
-		htmlreport=htmlreport+"\\extentreport\\"+this.getClass().getName()+".html";;
+		resultPath=resultPath+"\\screenshots\\"+clib.getDateTime();
+		
 		clib.browserLaunch(browser);
 		obj.pom();
-		//clib.implicitWait();
+		sc.resetStepCount();
+		
 	}
 	@AfterMethod
 	public void afterMethod() throws IOException
 	{
 		System.out.println("After Method");
 		clib.driverclose();
-		sc.resetStepCount();
-		r.AutomationReport(htmlreport, "12.3",spath, "QA", "18.10", "Jenkins");
+		
+	}
+	@AfterTest
+	public void afterTest()
+	{
+		try {
+			r.AutomationReport(htmlreport, "12.3",spath, "QA", "18.10", "Jenkins");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

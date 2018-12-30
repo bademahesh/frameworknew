@@ -1,5 +1,8 @@
 package com.library.common;
 
+import java.io.File;
+import java.io.IOException;
+
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -9,8 +12,16 @@ public class StepResultLogger  {
 	public ExtentReports reports;
 	StepCounter sc=new StepCounter();
 	CommonLibrary clib=new CommonLibrary();
-	public void startTest(String htmlreport,String testnum,String testName)
+	public void startTest(String htmlreport,String testnum,String testName) throws IOException
 	{
+		
+		/*File file = new java.io.File(htmlreport);
+		//file.mkdirs(); // wrong! 
+		file.getParentFile().mkdirs(); // correct!
+		if (!file.exists()) {
+		    file.createNewFile();
+		}*/ 
+
 		reports=new ExtentReports(htmlreport,false);
 		logger=reports.startTest(testnum+":"+testName);
 	}
@@ -22,6 +33,15 @@ public class StepResultLogger  {
 	public void passStep(String comment,String resultpath) throws Exception
 	{
 		logger.log(LogStatus.PASS, comment);
+		/*
+		File f=new File(resultpath);
+		
+		if (!f.exists()) {
+		    System.out.println("creating directory: " + f.getName());
+		    boolean result = false;
+		    f.mkdir();
+		    System.out.println("file created");
+		}*/
 		clib.screenShotSelenium(resultpath, "pass_", sc.stepNumber());
 	}
 	public void failStep(String comment,String resultpath) throws Exception
