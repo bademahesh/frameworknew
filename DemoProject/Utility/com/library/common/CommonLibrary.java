@@ -39,6 +39,8 @@ public class CommonLibrary extends BaseClass{
 		case "chrome": System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"//Browserdrivers//chromedriver.exe");
 		DriverClass.d=new ChromeDriver();
 		break;
+		
+		
 		}
 		
 	}

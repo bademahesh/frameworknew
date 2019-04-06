@@ -30,7 +30,7 @@ public class Prog2 extends BaseClass {
 		slog.passStep("User name Ente'xxxred", resultPath);
 		obj.hobj.txt_pass().sendKeys("xxxx");
 		slog.passStep("Password Entered", resultPath);
-		//obj.hobj.btn_login().click();
+		obj.hobj.btn_login().click();
 		slog.passStep("Login button clicked", resultPath);
 		
 		
